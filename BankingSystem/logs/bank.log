@@ -1,0 +1,1103 @@
+2026-06-10 10:31:41
+                [main]
+                INFO 
+                o.s.t.c.s.AnnotationConfigContextLoaderUtils
+                - Could not detect default configuration classes for test class [org.bank.bankingsystem.BankingSystemApplicationTests]: BankingSystemApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-06-10 10:31:41
+                [main]
+                INFO 
+                o.s.b.t.c.SpringBootTestContextBootstrapper
+                - Found @SpringBootConfiguration org.bank.bankingsystem.BankingSystemApplication for test class org.bank.bankingsystem.BankingSystemApplicationTests
+2026-06-10 10:31:41
+                [background-preinit]
+                INFO 
+                o.h.validator.internal.util.Version
+                - HV000001: Hibernate Validator 8.0.3.Final
+2026-06-10 10:31:41
+                [main]
+                INFO 
+                o.b.b.BankingSystemApplicationTests
+                - Starting BankingSystemApplicationTests using Java 21.0.11 with PID 6170 (started by anand.p in /home/anand.p/IdeaProjects/BankingSystem)
+2026-06-10 10:31:41
+                [main]
+                INFO 
+                o.b.b.BankingSystemApplicationTests
+                - No active profile set, falling back to 1 default profile: "default"
+2026-06-10 10:31:42
+                [main]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Starting...
+2026-06-10 10:31:42
+                [main]
+                INFO 
+                com.zaxxer.hikari.pool.HikariPool
+                - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6f731759
+2026-06-10 10:31:42
+                [main]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Start completed.
+2026-06-10 10:31:42
+                [main]
+                INFO 
+                org.hibernate.Version
+                - HHH000412: Hibernate ORM core version 6.6.53.Final
+2026-06-10 10:31:42
+                [main]
+                INFO 
+                o.h.c.i.RegionFactoryInitiator
+                - HHH000026: Second-level cache disabled
+2026-06-10 10:31:42
+                [main]
+                WARN 
+                org.hibernate.orm.deprecation
+                - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-10 10:31:42
+                [main]
+                INFO 
+                o.hibernate.orm.connections.pooling
+                - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.46
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-10 10:31:43
+                [main]
+                INFO 
+                o.h.e.t.j.p.i.JtaPlatformInitiator
+                - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-10 10:31:43
+                [main]
+                DEBUG
+                org.hibernate.SQL
+                - 
+    alter table accounts 
+       add column createdAt datetime(6)
+2026-06-10 10:31:43
+                [main]
+                DEBUG
+                org.hibernate.SQL
+                - 
+    alter table accounts 
+       add column customerName varchar(255) not null
+2026-06-10 10:31:43
+                [main]
+                DEBUG
+                org.hibernate.SQL
+                - 
+    alter table accounts 
+       add column status enum ('ACTIVE','BLOCKED','CLOSED')
+2026-06-10 10:31:43
+                [main]
+                DEBUG
+                org.hibernate.SQL
+                - 
+    alter table accounts 
+       add column updatedAt datetime(6)
+2026-06-10 10:31:43
+                [main]
+                DEBUG
+                org.hibernate.SQL
+                - 
+    alter table beneficiaries 
+       add column bankName varchar(255)
+2026-06-10 10:31:43
+                [main]
+                DEBUG
+                org.hibernate.SQL
+                - 
+    alter table beneficiaries 
+       add column beneficiaryAccountNumber varchar(255) not null
+2026-06-10 10:31:43
+                [main]
+                DEBUG
+                org.hibernate.SQL
+                - 
+    alter table beneficiaries 
+       add column beneficiaryName varchar(255)
+2026-06-10 10:31:43
+                [main]
+                DEBUG
+                org.hibernate.SQL
+                - 
+    alter table beneficiaries 
+       add column account_id bigint
+2026-06-10 10:31:43
+                [main]
+                DEBUG
+                org.hibernate.SQL
+                - 
+    alter table transactions 
+       add column sourceAccountId bigint
+2026-06-10 10:31:43
+                [main]
+                DEBUG
+                org.hibernate.SQL
+                - 
+    alter table transactions 
+       add column targetAccountId bigint
+2026-06-10 10:31:43
+                [main]
+                DEBUG
+                org.hibernate.SQL
+                - 
+    alter table transactions 
+       add column transactionStatus enum ('COMPLETED','CREATED','FAILED','SETTLED','VERIFIED')
+2026-06-10 10:31:43
+                [main]
+                DEBUG
+                org.hibernate.SQL
+                - 
+    alter table transactions 
+       add column transactionTime datetime(6)
+2026-06-10 10:31:43
+                [main]
+                DEBUG
+                org.hibernate.SQL
+                - 
+    alter table transactions 
+       add column transactionType enum ('DEPOSIT','TRANSFER','WITHDRAW')
+2026-06-10 10:31:43
+                [main]
+                DEBUG
+                org.hibernate.SQL
+                - 
+    alter table accounts 
+       drop index idx_account_number
+2026-06-10 10:31:43
+                [main]
+                DEBUG
+                org.hibernate.SQL
+                - 
+    alter table accounts 
+       add constraint idx_account_number unique (accountNumber)
+2026-06-10 10:31:43
+                [main]
+                DEBUG
+                org.hibernate.SQL
+                - 
+    create index idx_beneficiary_account 
+       on beneficiaries (beneficiaryAccountNumber)
+2026-06-10 10:31:43
+                [main]
+                DEBUG
+                org.hibernate.SQL
+                - 
+    create index idx_transaction_status 
+       on transactions (transactionStatus)
+2026-06-10 10:31:43
+                [main]
+                DEBUG
+                org.hibernate.SQL
+                - 
+    create index idx_transaction_time 
+       on transactions (transactionTime)
+2026-06-10 10:31:43
+                [main]
+                DEBUG
+                org.hibernate.SQL
+                - 
+    alter table beneficiaries 
+       add constraint FKkhalmfgo61kor4gjx3t26ka0 
+       foreign key (account_id) 
+       references accounts (id)
+2026-06-10 10:31:44
+                [main]
+                INFO 
+                o.b.b.BankingSystemApplicationTests
+                - Started BankingSystemApplicationTests in 2.757 seconds (process running for 3.512)
+2026-06-10 10:31:44
+                [SpringApplicationShutdownHook]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Shutdown initiated...
+2026-06-10 10:31:44
+                [SpringApplicationShutdownHook]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Shutdown completed.
+2026-06-10 10:32:12
+                [background-preinit]
+                INFO 
+                o.h.validator.internal.util.Version
+                - HV000001: Hibernate Validator 8.0.3.Final
+2026-06-10 10:32:12
+                [main]
+                INFO 
+                o.b.b.BankingSystemApplication
+                - Starting BankingSystemApplication using Java 21.0.11 with PID 6396 (/home/anand.p/IdeaProjects/BankingSystem/target/classes started by anand.p in /home/anand.p/IdeaProjects/BankingSystem)
+2026-06-10 10:32:12
+                [main]
+                INFO 
+                o.b.b.BankingSystemApplication
+                - No active profile set, falling back to 1 default profile: "default"
+2026-06-10 10:32:12
+                [main]
+                INFO 
+                o.s.b.w.e.tomcat.TomcatWebServer
+                - Tomcat initialized with port 8080 (http)
+2026-06-10 10:32:12
+                [main]
+                INFO 
+                o.a.coyote.http11.Http11NioProtocol
+                - Initializing ProtocolHandler ["http-nio-8080"]
+2026-06-10 10:32:12
+                [main]
+                INFO 
+                o.a.catalina.core.StandardService
+                - Starting service [Tomcat]
+2026-06-10 10:32:12
+                [main]
+                INFO 
+                o.a.catalina.core.StandardEngine
+                - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-06-10 10:32:12
+                [main]
+                INFO 
+                o.a.c.c.C.[Tomcat].[localhost].[/]
+                - Initializing Spring embedded WebApplicationContext
+2026-06-10 10:32:12
+                [main]
+                INFO 
+                o.s.b.w.s.c.ServletWebServerApplicationContext
+                - Root WebApplicationContext: initialization completed in 536 ms
+2026-06-10 10:32:12
+                [main]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Starting...
+2026-06-10 10:32:13
+                [main]
+                INFO 
+                com.zaxxer.hikari.pool.HikariPool
+                - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4bc6da03
+2026-06-10 10:32:13
+                [main]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Start completed.
+2026-06-10 10:32:13
+                [main]
+                INFO 
+                org.hibernate.Version
+                - HHH000412: Hibernate ORM core version 6.6.53.Final
+2026-06-10 10:32:13
+                [main]
+                INFO 
+                o.h.c.i.RegionFactoryInitiator
+                - HHH000026: Second-level cache disabled
+2026-06-10 10:32:13
+                [main]
+                WARN 
+                org.hibernate.orm.deprecation
+                - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-10 10:32:13
+                [main]
+                INFO 
+                o.hibernate.orm.connections.pooling
+                - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.46
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-10 10:32:13
+                [main]
+                INFO 
+                o.h.e.t.j.p.i.JtaPlatformInitiator
+                - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-10 10:32:14
+                [main]
+                INFO 
+                o.a.coyote.http11.Http11NioProtocol
+                - Starting ProtocolHandler ["http-nio-8080"]
+2026-06-10 10:32:14
+                [main]
+                INFO 
+                o.s.b.w.e.tomcat.TomcatWebServer
+                - Tomcat started on port 8080 (http) with context path '/'
+2026-06-10 10:32:14
+                [main]
+                INFO 
+                o.b.b.BankingSystemApplication
+                - Started BankingSystemApplication in 2.085 seconds (process running for 2.35)
+2026-06-10 10:34:46
+                [SpringApplicationShutdownHook]
+                INFO 
+                o.s.b.w.e.tomcat.GracefulShutdown
+                - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-10 10:34:46
+                [tomcat-shutdown]
+                INFO 
+                o.s.b.w.e.tomcat.GracefulShutdown
+                - Graceful shutdown complete
+2026-06-10 10:34:46
+                [SpringApplicationShutdownHook]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Shutdown initiated...
+2026-06-10 10:34:46
+                [SpringApplicationShutdownHook]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Shutdown completed.
+2026-06-10 10:34:58
+                [background-preinit]
+                INFO 
+                o.h.validator.internal.util.Version
+                - HV000001: Hibernate Validator 8.0.3.Final
+2026-06-10 10:34:58
+                [main]
+                INFO 
+                o.b.b.BankingSystemApplication
+                - Starting BankingSystemApplication using Java 21.0.11 with PID 6657 (/home/anand.p/IdeaProjects/BankingSystem/target/classes started by anand.p in /home/anand.p/IdeaProjects/BankingSystem)
+2026-06-10 10:34:58
+                [main]
+                INFO 
+                o.b.b.BankingSystemApplication
+                - No active profile set, falling back to 1 default profile: "default"
+2026-06-10 10:34:58
+                [main]
+                INFO 
+                o.s.b.w.e.tomcat.TomcatWebServer
+                - Tomcat initialized with port 8080 (http)
+2026-06-10 10:34:58
+                [main]
+                INFO 
+                o.a.coyote.http11.Http11NioProtocol
+                - Initializing ProtocolHandler ["http-nio-8080"]
+2026-06-10 10:34:58
+                [main]
+                INFO 
+                o.a.catalina.core.StandardService
+                - Starting service [Tomcat]
+2026-06-10 10:34:58
+                [main]
+                INFO 
+                o.a.catalina.core.StandardEngine
+                - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-06-10 10:34:58
+                [main]
+                INFO 
+                o.a.c.c.C.[Tomcat].[localhost].[/]
+                - Initializing Spring embedded WebApplicationContext
+2026-06-10 10:34:58
+                [main]
+                INFO 
+                o.s.b.w.s.c.ServletWebServerApplicationContext
+                - Root WebApplicationContext: initialization completed in 572 ms
+2026-06-10 10:34:58
+                [main]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Starting...
+2026-06-10 10:34:58
+                [main]
+                INFO 
+                com.zaxxer.hikari.pool.HikariPool
+                - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3a38f122
+2026-06-10 10:34:58
+                [main]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Start completed.
+2026-06-10 10:34:58
+                [main]
+                INFO 
+                org.hibernate.Version
+                - HHH000412: Hibernate ORM core version 6.6.53.Final
+2026-06-10 10:34:58
+                [main]
+                INFO 
+                o.h.c.i.RegionFactoryInitiator
+                - HHH000026: Second-level cache disabled
+2026-06-10 10:34:59
+                [main]
+                WARN 
+                org.hibernate.orm.deprecation
+                - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-10 10:34:59
+                [main]
+                INFO 
+                o.hibernate.orm.connections.pooling
+                - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.46
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-10 10:34:59
+                [main]
+                INFO 
+                o.h.e.t.j.p.i.JtaPlatformInitiator
+                - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-10 10:34:59
+                [main]
+                INFO 
+                o.a.coyote.http11.Http11NioProtocol
+                - Starting ProtocolHandler ["http-nio-8080"]
+2026-06-10 10:34:59
+                [main]
+                INFO 
+                o.s.b.w.e.tomcat.TomcatWebServer
+                - Tomcat started on port 8080 (http) with context path '/'
+2026-06-10 10:34:59
+                [main]
+                INFO 
+                o.b.b.BankingSystemApplication
+                - Started BankingSystemApplication in 2.177 seconds (process running for 2.492)
+2026-06-10 10:36:30
+                [SpringApplicationShutdownHook]
+                INFO 
+                o.s.b.w.e.tomcat.GracefulShutdown
+                - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-10 10:36:30
+                [tomcat-shutdown]
+                INFO 
+                o.s.b.w.e.tomcat.GracefulShutdown
+                - Graceful shutdown complete
+2026-06-10 10:36:30
+                [SpringApplicationShutdownHook]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Shutdown initiated...
+2026-06-10 10:36:30
+                [SpringApplicationShutdownHook]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Shutdown completed.
+2026-06-10 10:36:38
+                [background-preinit]
+                INFO 
+                o.h.validator.internal.util.Version
+                - HV000001: Hibernate Validator 8.0.3.Final
+2026-06-10 10:36:38
+                [main]
+                INFO 
+                o.b.b.BankingSystemApplication
+                - Starting BankingSystemApplication using Java 21.0.11 with PID 6863 (/home/anand.p/IdeaProjects/BankingSystem/target/classes started by anand.p in /home/anand.p/IdeaProjects/BankingSystem)
+2026-06-10 10:36:38
+                [main]
+                INFO 
+                o.b.b.BankingSystemApplication
+                - No active profile set, falling back to 1 default profile: "default"
+2026-06-10 10:36:38
+                [main]
+                INFO 
+                o.s.b.w.e.tomcat.TomcatWebServer
+                - Tomcat initialized with port 8080 (http)
+2026-06-10 10:36:38
+                [main]
+                INFO 
+                o.a.coyote.http11.Http11NioProtocol
+                - Initializing ProtocolHandler ["http-nio-8080"]
+2026-06-10 10:36:38
+                [main]
+                INFO 
+                o.a.catalina.core.StandardService
+                - Starting service [Tomcat]
+2026-06-10 10:36:38
+                [main]
+                INFO 
+                o.a.catalina.core.StandardEngine
+                - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-06-10 10:36:38
+                [main]
+                INFO 
+                o.a.c.c.C.[Tomcat].[localhost].[/]
+                - Initializing Spring embedded WebApplicationContext
+2026-06-10 10:36:38
+                [main]
+                INFO 
+                o.s.b.w.s.c.ServletWebServerApplicationContext
+                - Root WebApplicationContext: initialization completed in 510 ms
+2026-06-10 10:36:38
+                [main]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Starting...
+2026-06-10 10:36:38
+                [main]
+                INFO 
+                com.zaxxer.hikari.pool.HikariPool
+                - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@100ad67e
+2026-06-10 10:36:38
+                [main]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Start completed.
+2026-06-10 10:36:38
+                [main]
+                INFO 
+                org.hibernate.Version
+                - HHH000412: Hibernate ORM core version 6.6.53.Final
+2026-06-10 10:36:39
+                [main]
+                INFO 
+                o.h.c.i.RegionFactoryInitiator
+                - HHH000026: Second-level cache disabled
+2026-06-10 10:36:39
+                [main]
+                WARN 
+                org.hibernate.orm.deprecation
+                - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-10 10:36:39
+                [main]
+                INFO 
+                o.hibernate.orm.connections.pooling
+                - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.46
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-10 10:36:39
+                [main]
+                INFO 
+                o.h.e.t.j.p.i.JtaPlatformInitiator
+                - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-10 10:36:39
+                [main]
+                INFO 
+                o.a.coyote.http11.Http11NioProtocol
+                - Starting ProtocolHandler ["http-nio-8080"]
+2026-06-10 10:36:39
+                [main]
+                INFO 
+                o.s.b.w.e.tomcat.TomcatWebServer
+                - Tomcat started on port 8080 (http) with context path '/'
+2026-06-10 10:36:39
+                [main]
+                INFO 
+                o.b.b.BankingSystemApplication
+                - Started BankingSystemApplication in 2.031 seconds (process running for 2.301)
+2026-06-10 10:39:04
+                [SpringApplicationShutdownHook]
+                INFO 
+                o.s.b.w.e.tomcat.GracefulShutdown
+                - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-10 10:39:04
+                [tomcat-shutdown]
+                INFO 
+                o.s.b.w.e.tomcat.GracefulShutdown
+                - Graceful shutdown complete
+2026-06-10 10:39:04
+                [SpringApplicationShutdownHook]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Shutdown initiated...
+2026-06-10 10:39:04
+                [SpringApplicationShutdownHook]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Shutdown completed.
+2026-06-10 10:40:36
+                [background-preinit]
+                INFO 
+                o.h.validator.internal.util.Version
+                - HV000001: Hibernate Validator 8.0.3.Final
+2026-06-10 10:40:36
+                [main]
+                INFO 
+                o.b.b.BankingSystemApplication
+                - Starting BankingSystemApplication using Java 21.0.11 with PID 7650 (/home/anand.p/IdeaProjects/BankingSystem/target/classes started by anand.p in /home/anand.p/IdeaProjects/BankingSystem)
+2026-06-10 10:40:36
+                [main]
+                INFO 
+                o.b.b.BankingSystemApplication
+                - No active profile set, falling back to 1 default profile: "default"
+2026-06-10 10:40:36
+                [main]
+                INFO 
+                o.s.b.w.e.tomcat.TomcatWebServer
+                - Tomcat initialized with port 8080 (http)
+2026-06-10 10:40:36
+                [main]
+                INFO 
+                o.a.coyote.http11.Http11NioProtocol
+                - Initializing ProtocolHandler ["http-nio-8080"]
+2026-06-10 10:40:36
+                [main]
+                INFO 
+                o.a.catalina.core.StandardService
+                - Starting service [Tomcat]
+2026-06-10 10:40:36
+                [main]
+                INFO 
+                o.a.catalina.core.StandardEngine
+                - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-06-10 10:40:36
+                [main]
+                INFO 
+                o.a.c.c.C.[Tomcat].[localhost].[/]
+                - Initializing Spring embedded WebApplicationContext
+2026-06-10 10:40:36
+                [main]
+                INFO 
+                o.s.b.w.s.c.ServletWebServerApplicationContext
+                - Root WebApplicationContext: initialization completed in 514 ms
+2026-06-10 10:40:36
+                [main]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Starting...
+2026-06-10 10:40:37
+                [main]
+                INFO 
+                com.zaxxer.hikari.pool.HikariPool
+                - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@602f8f94
+2026-06-10 10:40:37
+                [main]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Start completed.
+2026-06-10 10:40:37
+                [main]
+                INFO 
+                org.hibernate.Version
+                - HHH000412: Hibernate ORM core version 6.6.53.Final
+2026-06-10 10:40:37
+                [main]
+                INFO 
+                o.h.c.i.RegionFactoryInitiator
+                - HHH000026: Second-level cache disabled
+2026-06-10 10:40:37
+                [main]
+                WARN 
+                org.hibernate.orm.deprecation
+                - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-10 10:40:37
+                [main]
+                INFO 
+                o.hibernate.orm.connections.pooling
+                - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.46
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-10 10:40:37
+                [main]
+                INFO 
+                o.h.e.t.j.p.i.JtaPlatformInitiator
+                - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-10 10:40:38
+                [main]
+                INFO 
+                o.a.coyote.http11.Http11NioProtocol
+                - Starting ProtocolHandler ["http-nio-8080"]
+2026-06-10 10:40:38
+                [main]
+                INFO 
+                o.s.b.w.e.tomcat.TomcatWebServer
+                - Tomcat started on port 8080 (http) with context path '/'
+2026-06-10 10:40:38
+                [main]
+                INFO 
+                o.b.b.BankingSystemApplication
+                - Started BankingSystemApplication in 1.998 seconds (process running for 2.388)
+2026-06-10 10:40:58
+                [SpringApplicationShutdownHook]
+                INFO 
+                o.s.b.w.e.tomcat.GracefulShutdown
+                - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-10 10:40:58
+                [tomcat-shutdown]
+                INFO 
+                o.s.b.w.e.tomcat.GracefulShutdown
+                - Graceful shutdown complete
+2026-06-10 10:40:58
+                [SpringApplicationShutdownHook]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Shutdown initiated...
+2026-06-10 10:40:58
+                [SpringApplicationShutdownHook]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Shutdown completed.
+2026-06-10 10:41:06
+                [background-preinit]
+                INFO 
+                o.h.validator.internal.util.Version
+                - HV000001: Hibernate Validator 8.0.3.Final
+2026-06-10 10:41:06
+                [main]
+                INFO 
+                o.b.b.BankingSystemApplication
+                - Starting BankingSystemApplication using Java 21.0.11 with PID 7844 (/home/anand.p/IdeaProjects/BankingSystem/target/classes started by anand.p in /home/anand.p/IdeaProjects/BankingSystem)
+2026-06-10 10:41:06
+                [main]
+                INFO 
+                o.b.b.BankingSystemApplication
+                - No active profile set, falling back to 1 default profile: "default"
+2026-06-10 10:41:06
+                [main]
+                INFO 
+                o.s.b.w.e.tomcat.TomcatWebServer
+                - Tomcat initialized with port 8080 (http)
+2026-06-10 10:41:06
+                [main]
+                INFO 
+                o.a.coyote.http11.Http11NioProtocol
+                - Initializing ProtocolHandler ["http-nio-8080"]
+2026-06-10 10:41:06
+                [main]
+                INFO 
+                o.a.catalina.core.StandardService
+                - Starting service [Tomcat]
+2026-06-10 10:41:06
+                [main]
+                INFO 
+                o.a.catalina.core.StandardEngine
+                - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-06-10 10:41:06
+                [main]
+                INFO 
+                o.a.c.c.C.[Tomcat].[localhost].[/]
+                - Initializing Spring embedded WebApplicationContext
+2026-06-10 10:41:06
+                [main]
+                INFO 
+                o.s.b.w.s.c.ServletWebServerApplicationContext
+                - Root WebApplicationContext: initialization completed in 523 ms
+2026-06-10 10:41:06
+                [main]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Starting...
+2026-06-10 10:41:07
+                [main]
+                INFO 
+                com.zaxxer.hikari.pool.HikariPool
+                - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@45e617c4
+2026-06-10 10:41:07
+                [main]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Start completed.
+2026-06-10 10:41:07
+                [main]
+                INFO 
+                org.hibernate.Version
+                - HHH000412: Hibernate ORM core version 6.6.53.Final
+2026-06-10 10:41:07
+                [main]
+                INFO 
+                o.h.c.i.RegionFactoryInitiator
+                - HHH000026: Second-level cache disabled
+2026-06-10 10:41:07
+                [main]
+                WARN 
+                org.hibernate.orm.deprecation
+                - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-10 10:41:07
+                [main]
+                INFO 
+                o.hibernate.orm.connections.pooling
+                - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.46
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-10 10:41:07
+                [main]
+                INFO 
+                o.h.e.t.j.p.i.JtaPlatformInitiator
+                - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-10 10:41:08
+                [main]
+                INFO 
+                o.a.coyote.http11.Http11NioProtocol
+                - Starting ProtocolHandler ["http-nio-8080"]
+2026-06-10 10:41:08
+                [main]
+                INFO 
+                o.s.b.w.e.tomcat.TomcatWebServer
+                - Tomcat started on port 8080 (http) with context path '/'
+2026-06-10 10:41:08
+                [main]
+                INFO 
+                o.b.b.BankingSystemApplication
+                - Started BankingSystemApplication in 1.957 seconds (process running for 2.235)
+2026-06-10 10:42:07
+                [http-nio-8080-exec-1]
+                INFO 
+                o.a.c.c.C.[Tomcat].[localhost].[/]
+                - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-10 10:42:07
+                [http-nio-8080-exec-1]
+                INFO 
+                o.s.web.servlet.DispatcherServlet
+                - Initializing Servlet 'dispatcherServlet'
+2026-06-10 10:42:07
+                [http-nio-8080-exec-1]
+                INFO 
+                o.s.web.servlet.DispatcherServlet
+                - Completed initialization in 1 ms
+2026-06-10 10:43:16
+                [SpringApplicationShutdownHook]
+                INFO 
+                o.s.b.w.e.tomcat.GracefulShutdown
+                - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-10 10:43:16
+                [tomcat-shutdown]
+                INFO 
+                o.s.b.w.e.tomcat.GracefulShutdown
+                - Graceful shutdown complete
+2026-06-10 10:43:16
+                [SpringApplicationShutdownHook]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Shutdown initiated...
+2026-06-10 10:43:16
+                [SpringApplicationShutdownHook]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Shutdown completed.
+2026-06-10 10:43:23
+                [background-preinit]
+                INFO 
+                o.h.validator.internal.util.Version
+                - HV000001: Hibernate Validator 8.0.3.Final
+2026-06-10 10:43:23
+                [main]
+                INFO 
+                o.b.b.BankingSystemApplication
+                - Starting BankingSystemApplication using Java 21.0.11 with PID 8089 (/home/anand.p/IdeaProjects/BankingSystem/target/classes started by anand.p in /home/anand.p/IdeaProjects/BankingSystem)
+2026-06-10 10:43:23
+                [main]
+                INFO 
+                o.b.b.BankingSystemApplication
+                - No active profile set, falling back to 1 default profile: "default"
+2026-06-10 10:43:24
+                [main]
+                INFO 
+                o.s.b.w.e.tomcat.TomcatWebServer
+                - Tomcat initialized with port 8080 (http)
+2026-06-10 10:43:24
+                [main]
+                INFO 
+                o.a.coyote.http11.Http11NioProtocol
+                - Initializing ProtocolHandler ["http-nio-8080"]
+2026-06-10 10:43:24
+                [main]
+                INFO 
+                o.a.catalina.core.StandardService
+                - Starting service [Tomcat]
+2026-06-10 10:43:24
+                [main]
+                INFO 
+                o.a.catalina.core.StandardEngine
+                - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-06-10 10:43:24
+                [main]
+                INFO 
+                o.a.c.c.C.[Tomcat].[localhost].[/]
+                - Initializing Spring embedded WebApplicationContext
+2026-06-10 10:43:24
+                [main]
+                INFO 
+                o.s.b.w.s.c.ServletWebServerApplicationContext
+                - Root WebApplicationContext: initialization completed in 513 ms
+2026-06-10 10:43:24
+                [main]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Starting...
+2026-06-10 10:43:24
+                [main]
+                INFO 
+                com.zaxxer.hikari.pool.HikariPool
+                - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1c34365c
+2026-06-10 10:43:24
+                [main]
+                INFO 
+                com.zaxxer.hikari.HikariDataSource
+                - HikariPool-1 - Start completed.
+2026-06-10 10:43:24
+                [main]
+                INFO 
+                org.hibernate.Version
+                - HHH000412: Hibernate ORM core version 6.6.53.Final
+2026-06-10 10:43:24
+                [main]
+                INFO 
+                o.h.c.i.RegionFactoryInitiator
+                - HHH000026: Second-level cache disabled
+2026-06-10 10:43:24
+                [main]
+                WARN 
+                org.hibernate.orm.deprecation
+                - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-10 10:43:24
+                [main]
+                INFO 
+                o.hibernate.orm.connections.pooling
+                - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.46
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-10 10:43:25
+                [main]
+                ERROR
+                o.h.internal.SessionFactoryImpl
+                - HHH000302: Unable to construct current session context [org.springframework.orm.hibernate5.SpringSessionContext]
+org.hibernate.boot.registry.classloading.spi.ClassLoadingException: Unable to load class [org.springframework.orm.hibernate5.SpringSessionContext]
+	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl.classForName(ClassLoaderServiceImpl.java:126)
+	at org.hibernate.internal.SessionFactoryImpl.createSessionContext(SessionFactoryImpl.java:1172)
+	at org.hibernate.internal.SessionFactoryImpl.buildCurrentSessionContext(SessionFactoryImpl.java:1153)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:315)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:463)
+	at org.hibernate.boot.internal.MetadataImpl.buildSessionFactory(MetadataImpl.java:210)
+	at org.bank.bankingsystem.config.HibernateConfig.sessionFactory(HibernateConfig.java:67)
+	at org.bank.bankingsystem.config.HibernateConfig$$SpringCGLIB$$0.CGLIB$sessionFactory$1(<generated>)
+	at org.bank.bankingsystem.config.HibernateConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:400)
+	at org.bank.bankingsystem.config.HibernateConfig$$SpringCGLIB$$0.sessionFactory(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:172)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:89)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:169)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:645)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1373)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1203)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1715)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1660)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1393)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1230)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1715)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1660)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1393)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1230)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1715)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1660)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1393)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1230)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1235)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1201)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1130)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:991)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:628)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at org.bank.bankingsystem.BankingSystemApplication.main(BankingSystemApplication.java:10)
+Caused by: java.lang.ClassNotFoundException: Could not load requested class : org.springframework.orm.hibernate5.SpringSessionContext
+	at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:216)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:593)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:536)
+	at java.base/java.lang.Class.forName(Class.java:515)
+	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl.classForName(ClassLoaderServiceImpl.java:123)
+	... 77 common frames omitted
+Caused by: java.lang.Throwable
+	at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:209)
+	... 83 common frames omitted
+	Suppressed: java.lang.ClassNotFoundException: org.springframework.orm.hibernate5.SpringSessionContext
+		at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+		at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+		at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+		at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:206)
+		... 83 common frames omitted
+	Suppressed: java.lang.ClassNotFoundException: org.springframework.orm.hibernate5.SpringSessionContext
+		at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+		at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+		at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+		at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:206)
+		... 83 common frames omitted
+	Suppressed: java.lang.ClassNotFoundException: org.springframework.orm.hibernate5.SpringSessionContext
+		at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+		at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+		at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+		at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:206)
+		... 83 common frames omitted
+2026-06-10 10:43:25
+                [main]
+                INFO 
+                o.a.coyote.http11.Http11NioProtocol
+                - Starting ProtocolHandler ["http-nio-8080"]
+2026-06-10 10:43:25
+                [main]
+                INFO 
+                o.s.b.w.e.tomcat.TomcatWebServer
+                - Tomcat started on port 8080 (http) with context path '/'
+2026-06-10 10:43:25
+                [main]
+                INFO 
+                o.b.b.BankingSystemApplication
+                - Started BankingSystemApplication in 1.939 seconds (process running for 2.209)
+2026-06-10 10:43:34
+                [http-nio-8080-exec-2]
+                INFO 
+                o.a.c.c.C.[Tomcat].[localhost].[/]
+                - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-10 10:43:34
+                [http-nio-8080-exec-2]
+                INFO 
+                o.s.web.servlet.DispatcherServlet
+                - Initializing Servlet 'dispatcherServlet'
+2026-06-10 10:43:34
+                [http-nio-8080-exec-2]
+                INFO 
+                o.s.web.servlet.DispatcherServlet
+                - Completed initialization in 0 ms
