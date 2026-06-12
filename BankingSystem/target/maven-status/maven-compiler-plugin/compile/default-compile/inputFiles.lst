@@ -1,9 +1,0 @@
-/home/anand.p/IdeaProjects/BankingSystem/src/main/java/org/bank/bankingsystem/BankingSystemApplication.java
-/home/anand.p/IdeaProjects/BankingSystem/src/main/java/org/bank/bankingsystem/config/HibernateConfig.java
-/home/anand.p/IdeaProjects/BankingSystem/src/main/java/org/bank/bankingsystem/controller/AccountController.java
-/home/anand.p/IdeaProjects/BankingSystem/src/main/java/org/bank/bankingsystem/dao/GenericDao.java
-/home/anand.p/IdeaProjects/BankingSystem/src/main/java/org/bank/bankingsystem/model/Account.java
-/home/anand.p/IdeaProjects/BankingSystem/src/main/java/org/bank/bankingsystem/model/Transaction.java
-/home/anand.p/IdeaProjects/BankingSystem/src/main/java/org/bank/bankingsystem/service/AccountService.java
-/home/anand.p/IdeaProjects/BankingSystem/src/main/java/org/bank/bankingsystem/service/TransactionService.java
-/home/anand.p/IdeaProjects/BankingSystem/src/main/java/org/bank/bankingsystem/util/HibernateUtil.java
